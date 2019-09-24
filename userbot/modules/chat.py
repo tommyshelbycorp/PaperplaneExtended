@@ -36,8 +36,7 @@ async def useridgetter(target):
 @errors_handler
 async def permalink(mention):
     """ For .mention command, generates a link to the user's PM with a custom text. """
-    user = await get_user_from_event(mention)[0]
-    custom = await get_user_from_event(mention)[1]
+    user, custom = await get_user_from_event(mention)
     if not user:
         await mention.edit("`User not found.`")
         return
